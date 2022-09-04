@@ -1,16 +1,27 @@
-import { createStore } from "redux";
+import { combineReducers, createStore } from "redux";
 
-const dataState = {
+const cardState = {
     data: {
         nama: 'imdadu',
         avatar: 'https://reqres.in/img/faces/12-image.jpg'
     }
 }
 
-
-const dataReduce = (state = dataState) => {
+//reducer => fungsi yang berfungsi unutk mereturn state
+const cardReducer = (state = cardState) => {
     return state
 } 
 
-const store = createStore(dataReduce);
+const navbarState = {
+    data: {
+        nama_comp: 'IMDADU COMPANY',
+        logo: 'INI LOGO'
+    }
+}
+
+const navbarReducer = (state = navbarState) => {
+    return state;
+}
+
+const store = createStore(combineReducers({navbarReducer, cardReducer}));
 export default store
